@@ -29,17 +29,13 @@ class HomeViewController: UIViewController {
             UIView.animate(withDuration: 0.55, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.1, options: [.curveEaseInOut], animations:
                 { [weak self] in
                     guard let vc = self, let currentFrameSize = vc.frameSizes[vc.indexOfCurrentFrameSize] else { return }
-                    vc.scheduleCollectionView.collectionViewLayout.invalidateLayout()
                     vc.scheduleCollectionView.frame = currentFrameSize
+                    vc.scheduleCollectionView.collectionViewLayout.invalidateLayout()
                 }, completion: nil)
         }
     }
     
-    private var indexOfVisibleDayCell = 0 {
-        didSet {
-            
-        }
-    }
+    private var indexOfVisibleDayCell = 0
     
     private let weekdays: [WeekDay] = [.sun, .mon, .tues, .wed, .thurs, .fri, .sat]
     
@@ -58,12 +54,13 @@ class HomeViewController: UIViewController {
         let widthOfCollectionView = scheduleCollectionView.frame.width
         let partiallyExpandedHeightOfCollectionView = heightOfCollectionView * 1.25
         let completelyExpandedHeightOfCollectionView = self.view.bounds.height - 32.0
-        
+    
         originalCollectionViewFrame = CGRect(x: 16, y: view.frame.maxY - 16.0 - heightOfCollectionView, width: widthOfCollectionView, height: heightOfCollectionView)
         
         partiallyExpandedCollectionViewFrame = CGRect(x: 16, y: view.frame.maxY - 16.0 - partiallyExpandedHeightOfCollectionView, width: widthOfCollectionView, height: partiallyExpandedHeightOfCollectionView)
         
-        completelyExpandedCollectionViewFrame = CGRect(x: 16, y: view.frame.maxY - 16.0 - completelyExpandedHeightOfCollectionView, width: widthOfCollectionView, height: completelyExpandedHeightOfCollectionView)
+        completelyExpandedCollectionViewFrame = CGRect(x: 0, y: view.frame.maxY - 16.0 - completelyExpandedHeightOfCollectionView, width: widthOfCollectionView, height: completelyExpandedHeightOfCollectionView)
+        
     }
 }
 
@@ -86,6 +83,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexOfCurrentFrameSize > 0 {
+            return
+        }
         indexOfCurrentFrameSize += 1
     }
 
@@ -97,7 +97,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         let topContentInset = scheduleCollectionView.contentInset.top
         let bottomContentInset = scheduleCollectionView.contentInset.bottom
         
-        return CGSize(width: scheduleCollectionView.frame.width, height: scheduleCollectionView.frame.height - topContentInset - bottomContentInset)
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height - topContentInset - bottomContentInset)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -124,13 +124,16 @@ extension HomeViewController {
     private func setUpSwipeGestureRecognizers() {
         let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(snapToNextCell))
         let swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(snapToPreviousCell))
-        let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: #selector(shrinkExpandedCell))
+        let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: #selector(shrinkCurrentCell))
+        let swipeUpGesture = UISwipeGestureRecognizer(target: self, action: #selector(growCurrentCell))
         swipeRightGesture.direction = .right
         swipeLeftGesture.direction = .left
         swipeDownGesture.direction = .down
+        swipeUpGesture.direction = .up
         scheduleCollectionView.addGestureRecognizer(swipeLeftGesture)
         scheduleCollectionView.addGestureRecognizer(swipeRightGesture)
         scheduleCollectionView.addGestureRecognizer(swipeDownGesture)
+        scheduleCollectionView.addGestureRecognizer(swipeUpGesture)
     }
     
     @objc func snapToNextCell(_ sender: UISwipeGestureRecognizer) {
@@ -151,8 +154,12 @@ extension HomeViewController {
         }
     }
     
-    @objc func shrinkExpandedCell(_ sender: UISwipeGestureRecognizer) {
+    @objc func shrinkCurrentCell(_ sender: UISwipeGestureRecognizer) {
         indexOfCurrentFrameSize = 0
+    }
+    
+    @objc func growCurrentCell(_ sender: UISwipeGestureRecognizer) {
+        indexOfCurrentFrameSize = (indexOfCurrentFrameSize + 1 < self.scheduleCollectionView.numberOfItems(inSection: 0)) ? indexOfCurrentFrameSize + 1 : indexOfCurrentFrameSize
     }
     
     

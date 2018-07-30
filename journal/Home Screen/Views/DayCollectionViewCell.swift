@@ -49,7 +49,7 @@ class DayCollectionViewCell: UICollectionViewCell {
     
     private func setConstraintsForMinimizedCell() {
         progressView.isHidden = true
-        taskTableTopConstraint.constant = 8.0
+        taskTableTopConstraint.constant = 16.0
     }
     
 }
