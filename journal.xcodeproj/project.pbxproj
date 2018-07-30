@@ -10,7 +10,7 @@
 		04799CCB210AD59E00ADDBFE /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04799CCA210AD59E00ADDBFE /* Task.swift */; };
 		04799CCF210AD9C800ADDBFE /* ProgressCircleGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04799CCE210AD9C800ADDBFE /* ProgressCircleGraph.swift */; };
 		04A066DD21083EC20025CC31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A066DC21083EC20025CC31 /* AppDelegate.swift */; };
-		04A066DF21083EC20025CC31 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A066DE21083EC20025CC31 /* ViewController.swift */; };
+		04A066DF21083EC20025CC31 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A066DE21083EC20025CC31 /* HomeViewController.swift */; };
 		04A066E221083EC20025CC31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A066E021083EC20025CC31 /* Main.storyboard */; };
 		04A066E421083EC20025CC31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04A066E321083EC20025CC31 /* Assets.xcassets */; };
 		04A066E721083EC20025CC31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A066E521083EC20025CC31 /* LaunchScreen.storyboard */; };
@@ -24,7 +24,7 @@
 		04799CCE210AD9C800ADDBFE /* ProgressCircleGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircleGraph.swift; sourceTree = "<group>"; };
 		04A066D921083EC20025CC31 /* journal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = journal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04A066DC21083EC20025CC31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		04A066DE21083EC20025CC31 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		04A066DE21083EC20025CC31 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		04A066E121083EC20025CC31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04A066E321083EC20025CC31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04A066E621083EC20025CC31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -67,7 +67,7 @@
 				04799CCE210AD9C800ADDBFE /* ProgressCircleGraph.swift */,
 				04A066F2210981380025CC31 /* Fonts */,
 				04A066DC21083EC20025CC31 /* AppDelegate.swift */,
-				04A066DE21083EC20025CC31 /* ViewController.swift */,
+				04A066DE21083EC20025CC31 /* HomeViewController.swift */,
 				04A066E021083EC20025CC31 /* Main.storyboard */,
 				04799CCA210AD59E00ADDBFE /* Task.swift */,
 				04A066F52109822A0025CC31 /* DayCollectionViewCell.swift */,
@@ -162,7 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04799CCB210AD59E00ADDBFE /* Task.swift in Sources */,
-				04A066DF21083EC20025CC31 /* ViewController.swift in Sources */,
+				04A066DF21083EC20025CC31 /* HomeViewController.swift in Sources */,
 				04A066F62109822A0025CC31 /* DayCollectionViewCell.swift in Sources */,
 				04799CCF210AD9C800ADDBFE /* ProgressCircleGraph.swift in Sources */,
 				04A066DD21083EC20025CC31 /* AppDelegate.swift in Sources */,

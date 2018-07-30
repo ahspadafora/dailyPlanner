@@ -8,37 +8,36 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
 
-    @IBOutlet weak var scheduleCollectionView: UICollectionView!
-    @IBOutlet weak var dailyPlannerLabel: UILabel!
+    @IBOutlet weak private var scheduleCollectionView: UICollectionView!
+    @IBOutlet weak private var dailyPlannerLabel: UILabel!
     
-    var originalCollectionViewFrame: CGRect? = nil
-    var partiallyExpandedCollectionViewFrame: CGRect? = nil
-    var completelyExpandedCollectionViewFrame: CGRect? = nil
+    private var originalCollectionViewFrame: CGRect? = nil
+    private var partiallyExpandedCollectionViewFrame: CGRect? = nil
+    private var completelyExpandedCollectionViewFrame: CGRect? = nil
     
-    lazy var frameSizes = [self.originalCollectionViewFrame, self.partiallyExpandedCollectionViewFrame, self.completelyExpandedCollectionViewFrame]
+    private lazy var frameSizes = [self.originalCollectionViewFrame, self.partiallyExpandedCollectionViewFrame, self.completelyExpandedCollectionViewFrame]
     
-    var currentFrameSize = 0 {
+    private var indexOfCurrentFrameSize = 0 {
         didSet {
-            self.dailyPlannerLabel.isHidden = (currentFrameSize == 2)
-            if currentFrameSize > frameSizes.count - 1 {
-                currentFrameSize = 0
-            }
+            self.dailyPlannerLabel.isHidden = (indexOfCurrentFrameSize == 2)
+            indexOfCurrentFrameSize = (indexOfCurrentFrameSize > frameSizes.count - 1) ? 0 : indexOfCurrentFrameSize
+            
             UIView.animate(withDuration: 0.55, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.1, options: [.curveEaseInOut], animations:
                 { [weak self] in
-                    guard let vc = self, let currentFrameSize = vc.frameSizes[vc.currentFrameSize] else { return }
+                    guard let vc = self, let currentFrameSize = vc.frameSizes[vc.indexOfCurrentFrameSize] else { return }
                     vc.scheduleCollectionView.collectionViewLayout.invalidateLayout()
                     vc.scheduleCollectionView.frame = currentFrameSize
                 }, completion: nil)
         }
     }
     
-    var currentPage = 0
+    private var currentPage = 0
     
-    let weekdays: [WeekDay] = [.sun, .mon, .tues, .wed, .thurs, .fri, .sat]
+    private let weekdays: [WeekDay] = [.sun, .mon, .tues, .wed, .thurs, .fri, .sat]
     
-    let mockTasks = [Task(description: "task1", isComplete: true, dayOfWeek: .mon),
+    private let mockTasks = [Task(description: "task1", isComplete: true, dayOfWeek: .mon),
                      Task(description: "task2", isComplete: true, dayOfWeek: .mon),
                      Task(description: "task1", isComplete: false, dayOfWeek: .mon)]
     
@@ -63,7 +62,7 @@ class ViewController: UIViewController {
 }
 
 // MARK: - CollectionView Methods
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return weekdays.count
@@ -76,26 +75,20 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         dayCell.weekDay = weekdays[indexPath.row]
         dayCell.taskTableView.delegate = dayCell
         dayCell.taskTableView.dataSource = dayCell
-        
         dayCell.task = mockTasks
-        
         dayCell.setConstraintsForMinimizedCell()
-        dayCell.progressView.setNeedsDisplay()
-        
-        
-        dayCell.taskTableView.reloadData()
         return dayCell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        currentFrameSize += 1
+        indexOfCurrentFrameSize += 1
         guard let cell = collectionView.cellForItem(at: indexPath) as? DayCollectionViewCell else { return }
-        cell.isExpanded = currentFrameSize != 0
+        cell.isExpanded = indexOfCurrentFrameSize != 0
     }
 
 }
 
-extension ViewController: UICollectionViewDelegateFlowLayout {
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let topContentInset = scheduleCollectionView.contentInset.top
@@ -115,7 +108,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 }
 
 // MARK: - Helper Methods
-extension ViewController {
+extension HomeViewController {
     private func setUpBackgroundView() {
         let backgroundView = UIView(frame: view.bounds)
         let gradientLayer = CAGradientLayer()
@@ -133,16 +126,11 @@ extension ViewController {
         scheduleCollectionView.addGestureRecognizer(swipeLeftGesture)
         scheduleCollectionView.addGestureRecognizer(swipeRightGesture)
     }
-}
-
-// MARK: - Selector Methods
-extension ViewController {
+    
     @objc func snapToNextCell(_ sender: UISwipeGestureRecognizer) {
         if currentPage + 1 < scheduleCollectionView.numberOfItems(inSection: 0) {
             scheduleCollectionView.collectionViewLayout.invalidateLayout()
-            if let originalFrame = originalCollectionViewFrame {
-                scheduleCollectionView.frame = originalFrame
-            }
+            indexOfCurrentFrameSize = 0
             scheduleCollectionView.scrollToItem(at: IndexPath(row: currentPage + 1, section: 0), at: .left, animated: true)
             currentPage += 1
         }
@@ -151,10 +139,11 @@ extension ViewController {
     @objc func snapToPreviousCell(_ sender: UISwipeGestureRecognizer) {
         if currentPage - 1 >= 0 {
             scheduleCollectionView.collectionViewLayout.invalidateLayout()
-            currentFrameSize = 0
+            indexOfCurrentFrameSize = 0
             scheduleCollectionView.scrollToItem(at: IndexPath(row: currentPage - 1, section: 0), at: .left, animated: true)
             currentPage -= 1
         }
     }
 }
+
 
