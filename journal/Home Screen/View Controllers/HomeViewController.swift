@@ -76,7 +76,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         dayCell.taskTableView.delegate = dayCell
         dayCell.taskTableView.dataSource = dayCell
         dayCell.task = mockTasks
-        dayCell.setConstraintsForMinimizedCell()
         return dayCell
     }
     

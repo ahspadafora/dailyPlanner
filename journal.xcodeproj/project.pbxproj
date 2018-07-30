@@ -64,16 +64,11 @@
 		04A066DB21083EC20025CC31 /* journal */ = {
 			isa = PBXGroup;
 			children = (
-				04799CCE210AD9C800ADDBFE /* ProgressCircleGraph.swift */,
+				04DE32F2210EAC8200B728E7 /* Assets */,
 				04A066F2210981380025CC31 /* Fonts */,
 				04A066DC21083EC20025CC31 /* AppDelegate.swift */,
-				04A066DE21083EC20025CC31 /* HomeViewController.swift */,
-				04A066E021083EC20025CC31 /* Main.storyboard */,
-				04799CCA210AD59E00ADDBFE /* Task.swift */,
-				04A066F52109822A0025CC31 /* DayCollectionViewCell.swift */,
-				04A066E321083EC20025CC31 /* Assets.xcassets */,
-				04A066E521083EC20025CC31 /* LaunchScreen.storyboard */,
-				04A066E821083EC20025CC31 /* Info.plist */,
+				04DE32ED210EAC2300B728E7 /* Home Screen */,
+				04DE32F1210EAC7600B728E7 /* Supporting Files */,
 			);
 			path = journal;
 			sourceTree = "<group>";
@@ -85,6 +80,59 @@
 				04A066F3210981490025CC31 /* CabinSketch-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		04DE32ED210EAC2300B728E7 /* Home Screen */ = {
+			isa = PBXGroup;
+			children = (
+				04DE32F0210EAC4E00B728E7 /* Views */,
+				04DE32EF210EAC3400B728E7 /* Models */,
+				04DE32EE210EAC2C00B728E7 /* View Controllers */,
+			);
+			path = "Home Screen";
+			sourceTree = "<group>";
+		};
+		04DE32EE210EAC2C00B728E7 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				04A066DE21083EC20025CC31 /* HomeViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		04DE32EF210EAC3400B728E7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				04799CCA210AD59E00ADDBFE /* Task.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		04DE32F0210EAC4E00B728E7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				04A066F52109822A0025CC31 /* DayCollectionViewCell.swift */,
+				04A066E021083EC20025CC31 /* Main.storyboard */,
+				04799CCE210AD9C800ADDBFE /* ProgressCircleGraph.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		04DE32F1210EAC7600B728E7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				04A066E521083EC20025CC31 /* LaunchScreen.storyboard */,
+				04A066E821083EC20025CC31 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		04DE32F2210EAC8200B728E7 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				04A066E321083EC20025CC31 /* Assets.xcassets */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,7 +352,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EPPV2KGY3C;
-				INFOPLIST_FILE = journal/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/journal/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ahspadafora.journal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -319,7 +367,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EPPV2KGY3C;
-				INFOPLIST_FILE = journal/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/journal/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ahspadafora.journal;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -13,8 +13,6 @@ class DayCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var taskTableView: UITableView!
     @IBOutlet weak var progressView: ProgressCircleGraph!
-    
-    
     @IBOutlet weak var taskTableTopConstraint: NSLayoutConstraint!
     
 
@@ -29,22 +27,6 @@ class DayCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    
-    func setConstraintsForExpandedCell() {
-        taskTableTopConstraint.constant = self.progressView.bounds.height + 32.0
-        self.progressView.isHidden = false
-        let progress: Float = Float(task.filter{ $0.isComplete }.count) / Float(task.count)
-
-        self.progressView.drawCircle()
-        self.progressView.setProgressWithAnimation(duration: 1.0, value: progress)
-        
-    }
-    
-    func setConstraintsForMinimizedCell() {
-        progressView.isHidden = true
-        taskTableTopConstraint.constant = 8.0
-    }
-    
     var task: [Task] = []
     
     let attributes: [NSAttributedStringKey: Any] = [NSAttributedStringKey.strikethroughColor : UIColor.black, .strikethroughStyle : 1]
@@ -55,6 +37,20 @@ class DayCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    private func setConstraintsForExpandedCell() {
+        taskTableTopConstraint.constant = self.progressView.bounds.height + 32.0
+        self.progressView.isHidden = false
+        let progress: Float = Float(task.filter{ $0.isComplete }.count) / Float(task.count)
+
+        self.progressView.drawCircle()
+        self.progressView.setProgressWithAnimation(duration: 1.0, value: progress)
+        
+    }
+    
+    private func setConstraintsForMinimizedCell() {
+        progressView.isHidden = true
+        taskTableTopConstraint.constant = 8.0
+    }
     
 }
 
