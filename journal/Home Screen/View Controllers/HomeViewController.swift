@@ -23,6 +23,8 @@ class HomeViewController: UIViewController {
         didSet {
             self.dailyPlannerLabel.isHidden = (indexOfCurrentFrameSize == 2)
             indexOfCurrentFrameSize = (indexOfCurrentFrameSize > frameSizes.count - 1) ? 0 : indexOfCurrentFrameSize
+            guard let cell = self.scheduleCollectionView.cellForItem(at: IndexPath(row: indexOfVisibleDayCell, section: 0)) as? DayCollectionViewCell else { return }
+            cell.isExpanded = (self.indexOfCurrentFrameSize != 0)
             
             UIView.animate(withDuration: 0.55, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.1, options: [.curveEaseInOut], animations:
                 { [weak self] in
@@ -33,7 +35,11 @@ class HomeViewController: UIViewController {
         }
     }
     
-    private var currentPage = 0
+    private var indexOfVisibleDayCell = 0 {
+        didSet {
+            
+        }
+    }
     
     private let weekdays: [WeekDay] = [.sun, .mon, .tues, .wed, .thurs, .fri, .sat]
     
@@ -81,8 +87,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         indexOfCurrentFrameSize += 1
-        guard let cell = collectionView.cellForItem(at: indexPath) as? DayCollectionViewCell else { return }
-        cell.isExpanded = indexOfCurrentFrameSize != 0
     }
 
 }
@@ -120,29 +124,38 @@ extension HomeViewController {
     private func setUpSwipeGestureRecognizers() {
         let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(snapToNextCell))
         let swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(snapToPreviousCell))
+        let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: #selector(shrinkExpandedCell))
         swipeRightGesture.direction = .right
         swipeLeftGesture.direction = .left
+        swipeDownGesture.direction = .down
         scheduleCollectionView.addGestureRecognizer(swipeLeftGesture)
         scheduleCollectionView.addGestureRecognizer(swipeRightGesture)
+        scheduleCollectionView.addGestureRecognizer(swipeDownGesture)
     }
     
     @objc func snapToNextCell(_ sender: UISwipeGestureRecognizer) {
-        if currentPage + 1 < scheduleCollectionView.numberOfItems(inSection: 0) {
+        if indexOfVisibleDayCell + 1 < scheduleCollectionView.numberOfItems(inSection: 0) {
             scheduleCollectionView.collectionViewLayout.invalidateLayout()
             indexOfCurrentFrameSize = 0
-            scheduleCollectionView.scrollToItem(at: IndexPath(row: currentPage + 1, section: 0), at: .left, animated: true)
-            currentPage += 1
+            scheduleCollectionView.scrollToItem(at: IndexPath(row: indexOfVisibleDayCell + 1, section: 0), at: .left, animated: true)
+            indexOfVisibleDayCell += 1
         }
     }
     
     @objc func snapToPreviousCell(_ sender: UISwipeGestureRecognizer) {
-        if currentPage - 1 >= 0 {
+        if indexOfVisibleDayCell - 1 >= 0 {
             scheduleCollectionView.collectionViewLayout.invalidateLayout()
             indexOfCurrentFrameSize = 0
-            scheduleCollectionView.scrollToItem(at: IndexPath(row: currentPage - 1, section: 0), at: .left, animated: true)
-            currentPage -= 1
+            scheduleCollectionView.scrollToItem(at: IndexPath(row: indexOfVisibleDayCell - 1, section: 0), at: .left, animated: true)
+            indexOfVisibleDayCell -= 1
         }
     }
+    
+    @objc func shrinkExpandedCell(_ sender: UISwipeGestureRecognizer) {
+        indexOfCurrentFrameSize = 0
+    }
+    
+    
 }
 
 

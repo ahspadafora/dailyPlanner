@@ -77,11 +77,11 @@
                                                     </prototypes>
                                                 </tableView>
                                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uzp-Ig-edL" userLabel="progressView" customClass="ProgressCircleGraph" customModule="journal" customModuleProvider="target">
-                                                    <rect key="frame" x="64" y="60.5" width="160" height="160"/>
+                                                    <rect key="frame" x="79" y="60.5" width="130" height="130"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="160" id="WRM-GE-5xL"/>
-                                                        <constraint firstAttribute="height" constant="160" id="qjy-zQ-LaE"/>
+                                                        <constraint firstAttribute="width" constant="130" id="WRM-GE-5xL"/>
+                                                        <constraint firstAttribute="height" constant="130" id="qjy-zQ-LaE"/>
                                                         <constraint firstAttribute="width" secondItem="Uzp-Ig-edL" secondAttribute="height" multiplier="1:1" id="vLx-Ud-AMo"/>
                                                     </constraints>
                                                 </view>
