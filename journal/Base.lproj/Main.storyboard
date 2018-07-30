@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AbrilFatface-Regular.ttf">
+            <string>AbrilFatface-Regular</string>
+        </array>
+        <array key="CabinSketch-Regular.ttf">
+            <string>CabinSketch-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="journal" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Otr-Ao-Fxf">
+                                <rect key="frame" x="16" y="196" width="288" height="356"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CpH-Dx-wgu">
+                                    <size key="itemSize" width="288" height="356"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="dayCell" id="ZMp-XH-v1r" customClass="DayCollectionViewCell" customModule="journal" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="356"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="356"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vi4-GB-bFl">
+                                                    <rect key="frame" x="96" y="16" width="97.5" height="36.5"/>
+                                                    <fontDescription key="fontDescription" name="AbrilFatface-Regular" family="Abril Fatface" pointSize="27"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uxR-GA-Xub">
+                                                    <rect key="frame" x="24" y="60.5" width="240" height="337.5"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <prototypes>
+                                                        <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="taskCell" textLabel="b2Z-Dn-0mI" style="IBUITableViewCellStyleDefault" id="GAc-7a-his">
+                                                            <rect key="frame" x="0.0" y="28" width="240" height="44"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GAc-7a-his" id="kFD-XE-wfF">
+                                                                <rect key="frame" x="0.0" y="0.0" width="240" height="43.5"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Monday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b2Z-Dn-0mI">
+                                                                        <rect key="frame" x="15" y="0.0" width="210" height="43.5"/>
+                                                                        <autoresizingMask key="autoresizingMask"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </tableViewCellContentView>
+                                                        </tableViewCell>
+                                                    </prototypes>
+                                                </tableView>
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uzp-Ig-edL" userLabel="progressView" customClass="ProgressCircleGraph" customModule="journal" customModuleProvider="target">
+                                                    <rect key="frame" x="64" y="60.5" width="160" height="160"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="160" id="WRM-GE-5xL"/>
+                                                        <constraint firstAttribute="height" constant="160" id="qjy-zQ-LaE"/>
+                                                        <constraint firstAttribute="width" secondItem="Uzp-Ig-edL" secondAttribute="height" multiplier="1:1" id="vLx-Ud-AMo"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="Vi4-GB-bFl" firstAttribute="centerX" secondItem="ZMp-XH-v1r" secondAttribute="centerX" id="2LZ-LG-gyi"/>
+                                            <constraint firstAttribute="bottom" secondItem="uxR-GA-Xub" secondAttribute="bottom" constant="-42" id="33b-ny-QPy"/>
+                                            <constraint firstItem="Vi4-GB-bFl" firstAttribute="top" secondItem="ZMp-XH-v1r" secondAttribute="topMargin" constant="8" id="4Ap-sY-XN6"/>
+                                            <constraint firstItem="Uzp-Ig-edL" firstAttribute="centerX" secondItem="ZMp-XH-v1r" secondAttribute="centerX" id="EVF-Xs-bUz"/>
+                                            <constraint firstItem="Uzp-Ig-edL" firstAttribute="top" secondItem="Vi4-GB-bFl" secondAttribute="bottom" constant="8" id="Wmh-A7-5Ma"/>
+                                            <constraint firstItem="uxR-GA-Xub" firstAttribute="leading" secondItem="ZMp-XH-v1r" secondAttribute="leadingMargin" constant="16" id="bQx-FH-ag5"/>
+                                            <constraint firstItem="uxR-GA-Xub" firstAttribute="top" secondItem="Vi4-GB-bFl" secondAttribute="bottom" constant="8" id="syp-PN-dNs"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="uxR-GA-Xub" secondAttribute="trailing" constant="16" id="wcO-KC-AzX"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="dayLabel" destination="Vi4-GB-bFl" id="Gk0-cS-K2N"/>
+                                            <outlet property="progressView" destination="Uzp-Ig-edL" id="E9K-hm-o7L"/>
+                                            <outlet property="taskTableTopConstraint" destination="syp-PN-dNs" id="9RX-8i-Oqk"/>
+                                            <outlet property="taskTableView" destination="uxR-GA-Xub" id="Xst-Z1-4OL"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="saO-MU-OZf"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="kLV-lv-aaW"/>
+                                </connections>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weekly Planner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8h-3O-5Jb">
+                                <rect key="frame" x="17" y="44" width="286" height="49"/>
+                                <fontDescription key="fontDescription" name="CabinSketch-Regular" family="Cabin Sketch" pointSize="42"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Otr-Ao-Fxf" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.65" priority="750" id="0lb-LN-JJY"/>
+                            <constraint firstItem="e8h-3O-5Jb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8ZR-tw-YjT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Otr-Ao-Fxf" secondAttribute="trailing" constant="16" id="BDV-3t-vj9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Otr-Ao-Fxf" secondAttribute="bottom" constant="16" id="WfG-iF-meT"/>
+                            <constraint firstItem="Otr-Ao-Fxf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="fCq-x3-KHl"/>
+                            <constraint firstItem="e8h-3O-5Jb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="vsU-Ox-tIZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="dailyPlannerLabel" destination="e8h-3O-5Jb" id="n5N-E1-nkp"/>
+                        <outlet property="scheduleCollectionView" destination="Otr-Ao-Fxf" id="cTL-Gq-tOy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="135" y="133.09859154929578"/>
+        </scene>
+    </scenes>
+</document>
